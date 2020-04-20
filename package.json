@@ -33,7 +33,8 @@
   },
   "homepage": "https://github.com/1carimflex/ups-brazil-js#readme",
   "dependencies": {
-    "axios": "^0.19.2"
+    "axios": "^0.19.2",
+    "xml": "^1.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",

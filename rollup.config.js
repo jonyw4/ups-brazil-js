@@ -44,4 +44,14 @@ export default [
       name: 'UPSBrazil',
     },
   },
+  {
+    input,
+    external: ['axios', 'xml', 'xml2js'],
+    plugins: resolve(),
+    output: {
+      file: 'dist/ups-brazil-js-esm.js',
+      format: 'es',
+      name: 'UPSBrazil',
+    },
+  },
 ];

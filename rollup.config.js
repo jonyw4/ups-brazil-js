@@ -10,12 +10,13 @@ const defaultPlugins = [
 export default [
   {
     input,
-    external: ['axios', 'xml'],
+    external: ['axios', 'xml', 'xml2js'],
     plugins: [].concat(defaultPlugins, [resolve(), commonjs()]),
     output: {
       globals: {
         axios: 'axios',
         xml: 'xml',
+        xml2js: 'xml2js',
       },
       file: 'dist/ups-brazil-js.js',
       format: 'umd',
@@ -24,7 +25,7 @@ export default [
   },
   {
     input,
-    external: ['axios', 'xml'],
+    external: ['axios', 'xml', 'xml2js'],
     plugins: [].concat(defaultPlugins, [
       resolve({
         browser: true,
@@ -36,6 +37,7 @@ export default [
       globals: {
         axios: 'axios',
         xml: 'xml',
+        xml2js: 'xml2js',
       },
       file: 'dist/ups-brazil-js-browser.js',
       format: 'umd',

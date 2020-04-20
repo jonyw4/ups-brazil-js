@@ -34,7 +34,8 @@
   "homepage": "https://github.com/1carimflex/ups-brazil-js#readme",
   "dependencies": {
     "axios": "^0.19.2",
-    "xml": "^1.0.1"
+    "xml": "^1.0.1",
+    "xml2js": "^0.4.23"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -96,5 +97,8 @@
   },
   "transform": {
     "^.+\\.[t|j]sx?$": "babel-jest"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }

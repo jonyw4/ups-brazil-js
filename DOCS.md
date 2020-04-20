@@ -59,7 +59,22 @@ Name | Description
 
 | Name | Type | Description |
 | --- | --- | --- |
-| CustoReais | `number` | Custo |
+| CustoReais | `number` | Price in BRL |
+| ValorDesconto | `number` | Discount value |
+| ValorSeguro | `number` | Insurance value |
+| ValorSeguro1 | `number` | Insurance value |
+| ValorFrete | `number` | Shipment price |
+| ValorFreteComSeguro | `number` | Shipment price with insurance |
+| ValorEA | `number` | ? |
+| FreteTotalReceber | `number` | Total shipping price |
+| CentroDestino | `number` | Destination distribution center |
+| ValorAR | `number` | ? |
+| AcessoSistema | `string` | System Access |
+| RetornoAreaRisco | `boolean` | If it is dangerous area |
+| FreteSemImposto | `number` | Shipment price without taxes |
+| ValorIcms | `number` | ICMS value |
+| ValorPisCofins | `number` | PIS/CONFINS Value |
+| TaxaDomestico | `number` | ? |
 
 <!-- LINKS -->
 

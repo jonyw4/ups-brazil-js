@@ -65,7 +65,22 @@ const URL_ENDPOINT = 'https://www.ups.com.br/upsbilling/UPS_Billing.asmx';
 
 /**
  * @typedef {object} UPSBrazilResponse
- * @property {number} CustoReais Custo
+ * @property {number} CustoReais Price in BRL
+ * @property {number} ValorDesconto Discount value
+ * @property {number} ValorSeguro Insurance value
+ * @property {number} ValorSeguro1 Insurance value
+ * @property {number} ValorFrete Shipment price
+ * @property {number} ValorFreteComSeguro Shipment price with insurance
+ * @property {number} ValorEA ?
+ * @property {number} FreteTotalReceber Total shipping price
+ * @property {number} CentroDestino Destination distribution center
+ * @property {number} ValorAR ?
+ * @property {string} AcessoSistema System Access
+ * @property {boolean} RetornoAreaRisco If it is dangerous area
+ * @property {number} FreteSemImposto Shipment price without taxes
+ * @property {number} ValorIcms ICMS value
+ * @property {number} ValorPisCofins PIS/CONFINS Value
+ * @property {number} TaxaDomestico ?
  */
 
 /**

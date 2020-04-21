@@ -74,10 +74,7 @@ export default async function (
       )}/${Math.round(packageData.length)}`,
     },
     {
-      autenticacao: [
-        { nr_conta: user },
-        { nr_chaveAcesso: password },
-      ],
+      autenticacao: [{ nr_conta: user }, { nr_chaveAcesso: password }],
     },
   ];
 
@@ -118,19 +115,28 @@ export default async function (
     SOAPAction: 'http://tempuri.org/UPS_Retorno_Frete',
     'Content-Type': 'text/xml; charset=utf-8',
   };
+
+  /**
+   * @ignore
+   * @type {import('axios').Method}
+   * */
+  const method = 'POST';
+
   const params = {
     url: URL_ENDPOINT,
-    method: 'POST',
+    method,
     timeout,
     headers,
     data: xmlString,
   };
 
   try {
-    const { data: dataResponse } = await axios(params);
+    const { data: dataResponse } = await axios.request(params);
     const parsedData = await parseXMLString(dataResponse);
     const innerData = parsedData['soap:Envelope']['soap:Body'][0].UPS_Retorno_FreteResponse[0]
-      .UPS_Retorno_FreteResult[0]['diffgr:diffgram'][0].NewDataSet[0].Table[0];
+      .UPS_Retorno_FreteResult[0]['diffgr:diffgram'][0].NewDataSet[0]
+      .Table[0];
+
     return {
       CustoReais: parseInt(innerData.CustoReais[0], 10),
       ValorDesconto: parseInt(innerData.ValorDesconto[0], 10),

@@ -61,6 +61,7 @@
     "eslint-plugin-jsdoc": "^23.0.0",
     "husky": "^4.2.5",
     "jest": "^25.3.0",
+    "jsdoc-import-typedef": "^4.0.0-dev",
     "jsdoc-to-markdown": "^5.0.3",
     "rollup": "^2.6.1",
     "rollup-plugin-babel": "^4.4.0",

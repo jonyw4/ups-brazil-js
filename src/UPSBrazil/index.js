@@ -131,7 +131,7 @@ export default async function (
   };
 
   try {
-    const { data: dataResponse } = await axios.request(params);
+    const { data: dataResponse } = await axios(params);
     const parsedData = await parseXMLString(dataResponse);
     const innerData = parsedData['soap:Envelope']['soap:Body'][0].UPS_Retorno_FreteResponse[0]
       .UPS_Retorno_FreteResult[0]['diffgr:diffgram'][0].NewDataSet[0]

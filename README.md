@@ -5,7 +5,7 @@
 [![codecov](https://codecov.io/gh/1carimflex/ups-brazil-js/branch/master/graph/badge.svg)](https://codecov.io/gh/1carimflex/ups-brazil-js)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-A JavaScript library to interface UPS Brazil API for calculate quote, it works in the browser and with Node.js. The [documentation can be found here](./DOCS.md).
+A JavaScript library to interface UPS Brazil API for calculate quote, it works in the browser and with Node.js. The [documentation can be found here](https://1carimflex.github.io/ups-brazil-js/).
 
 ### Do you like?
 *Please, consider supporting my work as a lot of effort takes place to create this component! Thanks a lot.*
@@ -18,4 +18,4 @@ This library provides a promise based interface for all functions. Before you
 can use the library, you need to provide authentication details which will be
 used through API calls.
 
-For a detailed documentation, see our [Documentation](./DOCS.md).
+For a detailed documentation, see our [Documentation](https://1carimflex.github.io/ups-brazil-js/).

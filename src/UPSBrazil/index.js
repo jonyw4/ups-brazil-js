@@ -46,7 +46,7 @@ const URL_ENDPOINT = 'https://www.ups.com.br/upsbilling/UPS_Billing.asmx';
  * @param {string} originZipCode Origin ZipCode
  * @param {string} destinationZipCode Destination ZipCode
  * @param {UPSBrazilPack} packageData Box data for shipping
- * @param {string} invoiceValue Total money value of the items in shipment
+ * @param {number} invoiceValue Total money value of the items in shipment
  * @param {number} [timeout=5000] Timeout of the request
  * @returns {Promise.<UPSBrazilResponse, (Error)>}  Return the simulate quote data, or an error if rejected.
  */

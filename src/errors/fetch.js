@@ -30,7 +30,7 @@ class UPSBrazilFetchServerError extends Error {
   /**
    * Creates an instance of UPSBrazilFetchServerError.
    *
-   * @param {string} status Status Code passed from the server
+   * @param {number} status Status Code passed from the server
    * @memberof UPSBrazilFetchServerError
    */
   constructor(status) {

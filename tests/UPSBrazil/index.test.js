@@ -16,6 +16,6 @@ test('call simulateQuote and check response', async () => {
     20000,
   );
 
-  console.log(response);
+  // console.log(response);
   expect(response).toBeTruthy();
 }, 30000);

@@ -106,6 +106,7 @@
     "^.+\\.[t|j]sx?$": "babel-jest"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "collectCoverageFrom": ["**/src/**", "!**/node_modules/**"]
   }
 }

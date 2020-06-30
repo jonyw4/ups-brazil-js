@@ -42,9 +42,9 @@
     "xml2js": "^0.4.23"
   },
   "devDependencies": {
-    "@babel/cli": "7.10.1",
-    "@babel/core": "7.10.2",
-    "@babel/preset-env": "7.10.2",
+    "@babel/cli": "7.10.4",
+    "@babel/core": "7.10.4",
+    "@babel/preset-env": "7.10.4",
     "@commitlint/cli": "9.0.1",
     "@commitlint/config-conventional": "9.0.1",
     "@godaddy/dmd": "1.0.2",

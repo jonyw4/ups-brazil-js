@@ -59,7 +59,7 @@
     "eslint-config-airbnb-base": "14.2.0",
     "eslint-plugin-import": "2.22.0",
     "eslint-plugin-jest": "23.13.2",
-    "eslint-plugin-jsdoc": "28.6.0",
+    "eslint-plugin-jsdoc": "28.6.1",
     "husky": "4.2.5",
     "jest": "26.1.0",
     "jsdoc-import-typedef": "4.0.0-dev",

@@ -10,10 +10,10 @@ test('call simulateQuote and check response', async () => {
       height: 11,
       length: 20,
       width: 30,
-      weight: 0.14,
+      weight: 0.14
     },
     200,
-    20000,
+    20000
   );
 
   // console.log(response);

@@ -2,12 +2,12 @@ import {
   AxiosTestError,
   UPSBrazilFetchServerError,
   UPSBrazilFetchClientError,
-  UPSBrazilFetchOtherError,
+  UPSBrazilFetchOtherError
 } from './fetch';
 
 export {
   AxiosTestError,
   UPSBrazilFetchServerError,
   UPSBrazilFetchClientError,
-  UPSBrazilFetchOtherError,
+  UPSBrazilFetchOtherError
 };

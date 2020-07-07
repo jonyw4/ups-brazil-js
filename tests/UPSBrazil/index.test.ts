@@ -2,8 +2,8 @@ import UPSBrazilCalculateQuote from '../../src';
 
 test('call simulateQuote and check response', async () => {
   const response = await UPSBrazilCalculateQuote(
-    process.env.API_USER,
-    process.env.API_PASSWORD,
+    String(process.env.API_USER),
+    String(process.env.API_PASSWORD),
     '12608220',
     '28695000',
     {

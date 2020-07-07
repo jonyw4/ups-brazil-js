@@ -1,7 +1,7 @@
 import {
   UPSBrazilFetchOtherError,
   UPSBrazilFetchClientError,
-  UPSBrazilFetchServerError,
+  UPSBrazilFetchServerError
 } from '.';
 
 describe('UPSBrazilFetchErrors', () => {

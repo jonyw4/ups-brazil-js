@@ -11,7 +11,7 @@
     "lint": "eslint 'src/**/*.ts'",
     "lint:fix": "eslint --fix 'src/**/*.ts'",
     "test": "npm run test:unit",
-    "test:ci": "npm run test:unit && npm run test:integration && codecov",
+    "test:ci": "npm run test:unit && codecov",
     "test:unit": "jest --collectCoverage ./src",
     "test:integration": "jest ./tests",
     "docs": "typedoc --out docs src",

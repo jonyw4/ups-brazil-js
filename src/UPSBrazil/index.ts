@@ -1,4 +1,4 @@
-import axios, { Method } from 'axios';
+import axios, { Method, AxiosError } from 'axios';
 import xml from 'xml';
 import { parseStringPromise as parseXMLString } from 'xml2js';
 import { UPSBrazilPack } from '../types';
@@ -86,55 +86,61 @@ export default async function UPSBrazil(
     { declaration: true }
   );
 
-  const headers = {
-    SOAPAction: 'http://tempuri.org/UPS_Retorno_Frete',
-    'Content-Type': 'text/xml; charset=utf-8'
-  };
+  return axios
+    .request({
+      url: URL_ENDPOINT,
+      method: 'POST',
+      timeout,
+      headers: {
+        SOAPAction: 'http://tempuri.org/UPS_Retorno_Frete',
+        'Content-Type': 'text/xml; charset=utf-8'
+      },
+      data: xmlString
+    })
+    .then(async (response) => {
+      const parsedData = await parseXMLString(response.data);
+      const innerData =
+        parsedData['soap:Envelope']['soap:Body'][0].UPS_Retorno_FreteResponse[0]
+          .UPS_Retorno_FreteResult[0]['diffgr:diffgram'][0].NewDataSet[0]
+          .Table[0];
 
-  const method: Method = 'POST';
-
-  const params = {
-    url: URL_ENDPOINT,
-    method,
-    timeout,
-    headers,
-    data: xmlString
-  };
-
-  try {
-    const { data: dataResponse } = await axios.request(params);
-    const parsedData = await parseXMLString(dataResponse);
-    const innerData =
-      parsedData['soap:Envelope']['soap:Body'][0].UPS_Retorno_FreteResponse[0]
-        .UPS_Retorno_FreteResult[0]['diffgr:diffgram'][0].NewDataSet[0]
-        .Table[0];
-
-    return {
-      CustoReais: parseInt(innerData.CustoReais[0], 10),
-      ValorDesconto: parseInt(innerData.ValorDesconto[0], 10),
-      ValorSeguro: parseInt(innerData.ValorSeguro[0], 10),
-      ValorSeguro1: parseInt(innerData.ValorSeguro1[0], 10),
-      ValorFrete: parseInt(innerData.ValorFrete[0], 10),
-      ValorFreteComSeguro: parseInt(innerData.ValorFreteComSeguro[0], 10),
-      ValorEA: parseInt(innerData.ValorEA[0], 10),
-      FreteTotalReceber: parseInt(innerData.FreteTotalReceber[0], 10),
-      CentroDestino: parseInt(innerData.CentroDestino[0], 10),
-      ValorAR: parseInt(innerData.ValorAR[0], 10),
-      AcessoSistema: innerData.AcessoSistema[0],
-      RetornoAreaRisco: innerData.RetornoAreaRisco[0] === 'S',
-      FreteSemImposto: parseInt(innerData.FreteSemImposto[0], 10),
-      ValorIcms: parseInt(innerData.ValorIcms[0], 10),
-      ValorPisCofins: parseInt(innerData.ValorPisCofins[0], 10),
-      TaxaDomestico: parseInt(innerData.TaxaDomestico[0], 10)
-    };
-  } catch (error) {
-    // console.log(error);
-    if (error.response) {
-      throw new UPSBrazilFetchServerError(error.response.status);
-    } else if (error.request) {
-      throw new UPSBrazilFetchClientError();
-    } else {
-      throw new UPSBrazilFetchOtherError();
-    }
-  }
+      return {
+        CustoReais: parseInt(innerData.CustoReais[0], 10),
+        ValorDesconto: parseInt(innerData.ValorDesconto[0], 10),
+        ValorSeguro: parseInt(innerData.ValorSeguro[0], 10),
+        ValorSeguro1: parseInt(innerData.ValorSeguro1[0], 10),
+        ValorFrete: parseInt(innerData.ValorFrete[0], 10),
+        ValorFreteComSeguro: parseInt(innerData.ValorFreteComSeguro[0], 10),
+        ValorEA: parseInt(innerData.ValorEA[0], 10),
+        FreteTotalReceber: parseInt(innerData.FreteTotalReceber[0], 10),
+        CentroDestino: parseInt(innerData.CentroDestino[0], 10),
+        ValorAR: parseInt(innerData.ValorAR[0], 10),
+        AcessoSistema: innerData.AcessoSistema[0],
+        RetornoAreaRisco: innerData.RetornoAreaRisco[0] === 'S',
+        FreteSemImposto: parseInt(innerData.FreteSemImposto[0], 10),
+        ValorIcms: parseInt(innerData.ValorIcms[0], 10),
+        ValorPisCofins: parseInt(innerData.ValorPisCofins[0], 10),
+        TaxaDomestico: parseInt(innerData.TaxaDomestico[0], 10)
+      };
+    })
+    .catch((error: AxiosError<any>) => {
+      if (error.response) {
+        throw new UPSBrazilFetchServerError(
+          error.message,
+          error.config,
+          error.code,
+          error.request,
+          error.response
+        );
+      } else if (error.request) {
+        throw new UPSBrazilFetchClientError(
+          error.message,
+          error.config,
+          error.code,
+          error.request
+        );
+      } else {
+        throw new UPSBrazilFetchOtherError(error.message, error.config);
+      }
+    });
 }

@@ -1,3 +1,5 @@
+import { AxiosResponse, AxiosRequestConfig } from 'axios';
+
 class AxiosTestError extends Error {
   config: any;
   code: any;
@@ -29,36 +31,56 @@ class AxiosTestError extends Error {
   }
 }
 
-class UPSBrazilFetchServerError extends Error {
-  /**
-   * Creates an instance of UPSBrazilFetchServerError.
-   *
-   * @param status Status Code passed from the server
-   */
-  constructor(status: number) {
-    super(`Server error status ${status} `);
+class AxiosError<T> extends Error {
+  config: AxiosRequestConfig;
+  code?: string;
+  request?: any;
+  response?: AxiosResponse<T>;
+  constructor(
+    message: string,
+    config: AxiosRequestConfig,
+    code?: string | undefined,
+    request?: any,
+    response?: AxiosResponse<T>
+  ) {
+    super(message);
+    this.config = config;
+    this.code = code;
+    this.request = request;
+    this.response = response;
+  }
+}
+
+class UPSBrazilFetchServerError<T> extends AxiosError<T> {
+  constructor(
+    message: string,
+    config: AxiosRequestConfig,
+    code: string | undefined,
+    request: any,
+    response: AxiosResponse<T>
+  ) {
+    super(message, config, code, request, response);
     this.name = 'UPSBrazilFetchServerError';
     Object.setPrototypeOf(this, new.target.prototype);
   }
 }
 
-class UPSBrazilFetchClientError extends Error {
-  /**
-   * Creates an instance of UPSBrazilFetchClientError.
-   */
-  constructor() {
-    super('Client error');
+class UPSBrazilFetchClientError<T> extends AxiosError<T> {
+  constructor(
+    message: string,
+    config: AxiosRequestConfig,
+    code: string | undefined,
+    request: any
+  ) {
+    super(message, config, code, request);
     this.name = 'UPSBrazilFetchClientError';
     Object.setPrototypeOf(this, new.target.prototype);
   }
 }
 
-class UPSBrazilFetchOtherError extends Error {
-  /**
-   * Creates an instance of UPSBrazilFetchOtherError.
-   */
-  constructor() {
-    super('Other Error');
+class UPSBrazilFetchOtherError<T> extends AxiosError<T> {
+  constructor(message: string, config: AxiosRequestConfig) {
+    super(message, config);
     this.name = 'UPSBrazilFetchOtherError';
     Object.setPrototypeOf(this, new.target.prototype);
   }

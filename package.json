@@ -48,7 +48,7 @@
     "codecov": "3.7.2",
     "eslint": "7.3.1",
     "eslint-config-prettier": "6.11.0",
-    "eslint-plugin-prettier": "3.1.4",
+    "eslint-plugin-prettier": "3.4.1",
     "husky": "4.2.5",
     "jest": "26.1.0",
     "semantic-release": "17.1.1",
